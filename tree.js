@@ -1,15 +1,143 @@
-var Node = function (value) {
+var treeNode = function (value) {
   this.value = value;
   this.children = [];
 }
 
 
-var newTree = new Node(1);
-newTree.children[0] = new Node(2);
-newTree.children[1] = new Node(3);
-newTree.children[2] = new Node(4);
-newTree.children[0].children[0] = new Node(5)
-newTree.children[0].children[1] = new Node(6)
-newTree.children[0].children[2] = new Node(7)
+var newTree = new treeNode(1);
+newTree.children[0] = new treeNode(2);
+newTree.children[1] = new treeNode(3);
+newTree.children[2] = new treeNode(4);
+newTree.children[0].children[0] = new treeNode(5)
+newTree.children[0].children[1] = new treeNode(6)
+newTree.children[0].children[2] = new treeNode(7)
 
-console.log(JSON.stringify(newTree, null, 2)); 
+// console.log(JSON.stringify(newTree, null, 2));
+
+
+
+var BinaryTreeNode = function(value){
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
+
+BinaryTreeNode.prototype.push = function(val){
+  var currentNode = this;
+
+  if( val < currentNode.value ){
+    if(currentNode.left === null){
+      currentNode.left = new BinaryTreeNode(val);
+    } else {
+      currentNode.left.push(val)
+    }
+  } else {
+    if(currentNode.right === null){
+      currentNode.right = new BinaryTreeNode(val);
+    } else {
+      currentNode.right.push(val)
+    }
+  }
+};
+
+BinaryTreeNode.prototype.includeVal = function (val) {
+  var currentNode = this;
+  if(currentNode.value === val){
+    return true;
+  } 
+  if(currentNode.value > val){
+    if(currentNode.left === null){
+      return false;
+    }
+    return currentNode.left.includeVal(val)
+  }else {
+    if(currentNode.right === null){
+      return false;
+    }
+    return currentNode.right.includeVal(val)
+  }
+};
+
+
+BinaryTreeNode.prototype.bfs = function(cb){
+  var nodesInQueue = [];
+  nodesInQueue.push(this);
+
+  while(nodesInQueue.length){
+    var currentNode = nodesInQueue.shift();
+    if(currentNode){
+      cb(currentNode.value)
+    }
+    if(currentNode.left){
+      nodesInQueue.push(currentNode.left)
+    }
+    if(currentNode.right){
+      nodesInQueue.push(currentNode.right)
+    }
+  }
+}
+
+BinaryTreeNode.prototype.preorderTraversal = function(cb){
+  var currentNode = this;
+  if(currentNode.value){
+    cb(currentNode.value)
+    if(currentNode.left){
+      currentNode.left.preorderTraversal(cb);
+    }
+    if(currentNode.right){
+      currentNode.right.preorderTraversal(cb);
+    }
+  }
+}
+
+BinaryTreeNode.prototype.inrderTraversal = function(cb){
+  var currentNode = this;
+  if(currentNode.value){
+    cb(currentNode.value)
+    if(currentNode.left){
+      currentNode.left.preorderTraversal(cb);
+    }
+    if(currentNode.right){
+      currentNode.right.preorderTraversal(cb);
+    }
+  }
+}
+
+var binaryTree = new BinaryTreeNode(3);
+binaryTree.push(2)
+binaryTree.push(4)
+binaryTree.push(5)
+binaryTree.push(1)
+console.log(JSON.stringify(binaryTree, null, 2));
+
+
+binaryTree.inOrderTraversal( function(val){console.log(val)} );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
