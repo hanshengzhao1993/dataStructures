@@ -90,28 +90,45 @@ BinaryTreeNode.prototype.preorderTraversal = function(cb){
   }
 }
 
-BinaryTreeNode.prototype.inrderTraversal = function(cb){
+BinaryTreeNode.prototype.inOrderTraversal = function(cb){
   var currentNode = this;
-  if(currentNode.value){
-    cb(currentNode.value)
-    if(currentNode.left){
-      currentNode.left.preorderTraversal(cb);
-    }
-    if(currentNode.right){
-      currentNode.right.preorderTraversal(cb);
-    }
+  
+  if(currentNode.left){
+    currentNode.left.inOrderTraversal(cb)
+  }
+
+  cb(currentNode.value)
+  
+  if(currentNode.right){
+    currentNode.right.inOrderTraversal(cb);
   }
 }
 
-var binaryTree = new BinaryTreeNode(3);
+BinaryTreeNode.prototype.postOrderTraversal = function(cb){
+  var currentNode = this;
+  
+  if(currentNode.left){
+    currentNode.left.postOrderTraversal(cb)
+  }
+  if(currentNode.right){
+    currentNode.right.postOrderTraversal(cb);
+  }
+
+  cb(currentNode.value)
+  
+}
+
+var binaryTree = new BinaryTreeNode(5);
+binaryTree.push(3)
+binaryTree.push(7)
 binaryTree.push(2)
 binaryTree.push(4)
-binaryTree.push(5)
-binaryTree.push(1)
+binaryTree.push(6)
+binaryTree.push(8)
 console.log(JSON.stringify(binaryTree, null, 2));
 
 
-binaryTree.inOrderTraversal( function(val){console.log(val)} );
+binaryTree.postOrderTraversal( function(val){console.log(val)} );
 
 
 
