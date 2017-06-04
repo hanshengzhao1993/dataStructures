@@ -62,6 +62,40 @@ class BinaryTree{
     }
   }
  }
+ preOrderTraversal(cb){
+  var currentNode = this;
+  if(currentNode.value){
+    cb(currentNode.value)
+    if(currentNode.left){
+      currentNode.left.preOrderTraversal(cb);
+    }
+    if(currentNode.right){
+      currentNode.right.preOrderTraversal(cb);
+    }
+  }
+ }
+ inOrderTraversal(cb){
+  var currentNode = this;
+  if(currentNode.left){
+    currentNode.left.inOrderTraversal(cb);
+  }
+  currentNode.value(cb)
+
+  if(currentNode.right){
+    currentNode.right.inOrderTraversal(cb);
+  }
+ }
+ postOrderTraversal(cb){
+   var currentNode = this;
+  if(currentNode.left){
+    currentNode.left.postOrderTraversal(cb);
+  }
+  
+  if(currentNode.right){
+    currentNode.right.postOrderTraversal(cb);
+  }
+  currentNode.value(cb)
+ }
 
 }
 
