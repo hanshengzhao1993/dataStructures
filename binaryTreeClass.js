@@ -96,6 +96,30 @@ class BinaryTree{
   }
   currentNode.value(cb)
  }
+ leastCommonAncestor(node1, node2, obj){
+  obj = obj || {};
+  var array = [];
+
+  if(node1.parent === null && node2.parent=== null){
+    return undefined;
+  }
+
+  if(node1.parent){
+    if(obj[node1.parent]){
+      return node1.parent
+    }
+    obj[node1.parent] = 1;
+  }
+
+  if(node2.parent){
+    if(obj[node2.parent]) {
+      return node2.parent
+    }
+    obj[node2.parent] = 1;
+  }
+
+  leastCommonAncestor(node1.parent, node2.parent, obj)
+ }
 
 }
 
