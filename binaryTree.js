@@ -85,17 +85,35 @@ BinaryTree.prototype.maxContinousSum = function () {
   return max[0];
 }
 
+BinaryTree.prototype.iterativeInOrderTraversal = function (cb, node) {
+  node = node || this;
+  var stack = [];
+  while(stack.length || node ){
+    if(node){
+      stack.push(node);
+      node = node.left;
+    } else {
+      var popped = stack.pop()
+      cb(popped.value)
+      if(popped.right){
+        stack.push(popped.right);
+      }
+    }
+  }
+}
+
 var tree1 = new BinaryTree(1);
-tree1.left = new BinaryTree(6);
-tree1.right = new BinaryTree(3);
-tree1.left.left = new BinaryTree(4);
-tree1.left.right = new BinaryTree(5);
+tree1.left = new BinaryTree(5);
+tree1.right = new BinaryTree(2);
+tree1.right.right = new BinaryTree(4);
+tree1.left.left = new BinaryTree(6);
+tree1.left.right = new BinaryTree(7);
 
 // tree1.right.right = node(7);
 // tree1.right.left = node(6);
 // tree1.right.right.right = node(4);
-// console.log(JSON.stringify(tree1, null , 2));
-// console.log(tree1.BFS( (ele)=>{console.log(ele)} ))
+console.log(JSON.stringify(tree1, null , 2));
+console.log(tree1.iterativeInOrderTraversal( (ele)=>{console.log(ele)} ))
 // console.log(tree1.postOrderTraversal( (ele)=>{console.log(ele)} ))
 
 // console.log(tree1.maxContinousSum())
@@ -120,12 +138,6 @@ var specialIndex = function (array, currentIndex, max, low) {
     return specialIndex(array, Math.floor((low + currentIndex)/ 2), currentIndex - 1, 0  );
   }
 }
-
-
-// console.log(specialIndex([-22, -11, 0 , 3 , 9]));
-// console.log(specialIndex([-22, -11, 0 , 3 , 9]) === 3);
-
-console.log(specialIndex([-10,-9, 2,4,30,40,60]))
 
 
 
