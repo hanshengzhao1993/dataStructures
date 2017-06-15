@@ -1,20 +1,23 @@
 var quickSort = function (array) {
-  if(array.length <= 1) {
+  var currentPivot = [array[array.length - 1]];
+  var left = [], right = [];
+  if(array.length ===0){
     return array;
   }
-  var swapPosition = Math.floor((array.length -1)/2);
-  var swapValue = array[swapPosition]
-  var less = [];
-  var more = [];
-  array = array.slice(0,swapPosition).concat(array.slice(swapPosition + 1));
-  for(var i = 0; i< array.length ; i++) {
-    if(array[i] < swapValue) {
-      less.push(array[i]);
-    } else {
-      more.push(array[i]);
+  for(var current = 0; current< array.length - 1; current++){
+    if(array[current] < currentPivot){
+      left.push(array[current])
+    }else {
+      right.push(array[current])
     }
   }
-  return (quickSort(less)).concat([swapValue],quickSort(more));
+  console.log('left: ', quickSort(left))
+  console.log('right: ', right)
+  // return left.concat(currentPivot, right)
+  return quickSort(left).concat(currentPivot, quickSort(right))
+
 }
 
-console.log(quickSort([5,3,1,2,4]))
+console.log(quickSort([11, 16, 2, 8, 1, 9, 4, 7]))
+
+// console.log(quickSort([2,1,4]))
