@@ -128,7 +128,7 @@ binaryTree.push(8)
 console.log(JSON.stringify(binaryTree, null, 2));
 
 
-binaryTree.postOrderTraversal( function(val){console.log(val)} );
+// binaryTree.postOrderTraversal( function(val){console.log(val)} );
 
 
 
