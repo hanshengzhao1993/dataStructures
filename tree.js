@@ -118,15 +118,6 @@ BinaryTreeNode.prototype.postOrderTraversal = function(cb){
   
 }
 
-var binaryTree = new BinaryTreeNode(5);
-binaryTree.push(3)
-binaryTree.push(7)
-binaryTree.push(2)
-binaryTree.push(4)
-binaryTree.push(6)
-binaryTree.push(8)
-console.log(JSON.stringify(binaryTree, null, 2));
-
 
 
 
