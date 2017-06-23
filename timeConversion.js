@@ -11,9 +11,3 @@ var timeConversion = function (str) {
   return str.slice(0,8);
 
 }
-
-
-
-console.log(timeConversion('07:05:45PM'));
-
-console.log(timeConversion('07:05:45AM'));
