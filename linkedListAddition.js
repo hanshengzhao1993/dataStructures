@@ -7,6 +7,7 @@ var addTwoNumbers = function(l1, l2) {
   var node1 = l1;
   var node2 = l2;
   var nodeHolder = [];
+  var valuesOfAddedNode = [];
   var newList = null;
     // var recurse = function (node1, node2, addedNode) {
         
@@ -48,11 +49,16 @@ var addTwoNumbers = function(l1, l2) {
         }
     }
 
-    for(var i = 0; i< nodeHolder.length - 1; i++){
-        nodeHolder[i].next = nodeHolder[i+1];
+    for(var i = 0; i< nodeHolder.length; i++){
+        if(i < nodeHolder.length - 1){
+            valuesOfAddedNode.push(nodeHolder[i].value);
+            nodeHolder[i].next = nodeHolder[i+1];
+        } else {
+            valuesOfAddedNode.push(nodeHolder[i].value);
+        }
     }
 
-    return nodeHolder[0];
+    return valuesOfAddedNode;
 };
 
 
@@ -66,9 +72,5 @@ var node2 = new ListNode(3);
 node2.next = new ListNode(7);
 node2.next.next = new ListNode(2)
 
-
-
-console.log(node1);
-console.log(node2);
 
 console.log(addTwoNumbers(node1, node2));
