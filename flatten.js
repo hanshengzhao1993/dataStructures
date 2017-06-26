@@ -92,7 +92,30 @@ var flattenReduce = function (array) {
   },[])
 }
 
-console.log(flattenReduce([[[1]],2,[[[[[4]]]]]]))
+var flattenArrayIterative = function (array) {
+  var arrayResult = [];
+  while(array.length > 0){
+    var a = array.shift();
+    // console.log(a);
+    if(Array.isArray(a)){
+      if(a.length === 1){
+        a = a[0]
+        array.unshift(a);
+      } else {
+        for(var i = a.length - 1; i >= 0; i--){
+          array.unshift(a[i])
+          console.log(array)
+        }
+      }
+    } else {
+      arrayResult.push(a);
+    }
+  }
+  return arrayResult;
+};
+
+console.log(flattenArrayIterative([[[[[[1]]]],[[[[[[[[[[[2]]]]]]]]]]]],3,4]))
+// console.log(flattenReduce([[[1]],2,[[[[[4]]]]]]))
 
 // console.log("MUTATE ARRAY: ",mutateArray(["a", "b", "c", "d", "e", "f"], [2, 3, 4, 0, 5, 1]));
 
