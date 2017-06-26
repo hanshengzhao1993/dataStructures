@@ -16,7 +16,7 @@ var flatten = function (array, flattenArray){
 
 
 // console.log(flatten([[1,2,3],[4,5,6],[7,8,9], 10]));
-// console.log(flatten([[1,2,[4,5,6],[7,8]],[[[{9:9}]]]]));
+// console.log(flatten([[1,2,[4,5,6],[7,8]],[[[[[[[[9]]]]]]]]]));
 
 
 var indexArray = function (array, index) {
@@ -86,13 +86,21 @@ var mutate2 = function (array, index) {
   return array;
 }
 
+var flattenReduce = function (array) {
+  return array.reduce(function (acc, ele) {
+    return acc.concat(Array.isArray(ele) ? flattenReduce(ele) : ele);
+  },[])
+}
+
+console.log(flattenReduce([[[1]],2,[[[[[4]]]]]]))
+
 // console.log("MUTATE ARRAY: ",mutateArray(["a", "b", "c", "d", "e", "f"], [2, 3, 4, 0, 5, 1]));
 
 // console.log("MUTATE ARRAY SPLICE: ",mutateArraySplice(["a", "b", "c", "d", "e", "f"], [2, 3, 4, 0, 5, 1]));
 
-console.log("MUTATE ARRAY: ",mutateArray(["a", "b", "c", "d", "e", "f"], [0, 3, 4, 2, 5, 1]));
+// console.log("MUTATE ARRAY: ",mutateArray(["a", "b", "c", "d", "e", "f"], [0, 3, 4, 2, 5, 1]));
 
-console.log("MUTATE ARRAY: ",mutate2(["a", "b", "c", "d", "e", "f"], [0, 3, 4, 2, 5, 1]));
+// console.log("MUTATE ARRAY: ",mutate2(["a", "b", "c", "d", "e", "f"], [0, 3, 4, 2, 5, 1]));
 
 
 
