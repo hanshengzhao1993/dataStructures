@@ -57,9 +57,42 @@ var mutateArray = function (arrayEle, arrayIndex) {
     }
   }
   return arrayEle
+};
+
+var mutateArraySplice = function (arrayEle, arrayIndex) {
+  for(var i = 0; i< arrayIndex.length; i++){
+    var tempIndex = arrayIndex[i];
+    var length = arrayIndex.length;
+    arrayEle[tempIndex+length] = arrayEle[i];
+  }
+
+  return arrayEle.splice(6);
 }
 
-console.log("MUTATE ARRAY: ",mutateArray(["a", "b", "c", "d", "e", "f"], [2, 3, 4, 0, 5, 1]));
+
+var mutate2 = function (array, index) {
+  var i = 0;
+
+ while (i < index.length) {
+    if (index[i] === i) {
+      i++;
+    } else {
+      var swapIndex = index[i];
+      swapArray(array, i, swapIndex);
+      swapArray(index, i, swapIndex);
+    }
+    
+  }
+  return array;
+}
+
+// console.log("MUTATE ARRAY: ",mutateArray(["a", "b", "c", "d", "e", "f"], [2, 3, 4, 0, 5, 1]));
+
+// console.log("MUTATE ARRAY SPLICE: ",mutateArraySplice(["a", "b", "c", "d", "e", "f"], [2, 3, 4, 0, 5, 1]));
+
+console.log("MUTATE ARRAY: ",mutateArray(["a", "b", "c", "d", "e", "f"], [0, 3, 4, 2, 5, 1]));
+
+console.log("MUTATE ARRAY: ",mutate2(["a", "b", "c", "d", "e", "f"], [0, 3, 4, 2, 5, 1]));
 
 
 
