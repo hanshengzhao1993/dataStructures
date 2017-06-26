@@ -48,18 +48,18 @@ var swapArray = function (array, index1, index2) {
   array[index1] = temp;
 }
 
-var muateArray = function (arrayEle, arrayIndex) {
+var mutateArray = function (arrayEle, arrayIndex) {
   for(var i =0; i<arrayEle.length; i++){
     while(arrayIndex[i] !== i){
       var tempIndex = arrayIndex[i];
-      swapArray(arrayIndex, i, temp)
-      swapArray(arrayEle, i, temp);
+      swapArray(arrayIndex, i, tempIndex);
+      swapArray(arrayEle, i, tempIndex);
     }
   }
   return arrayEle
 }
 
-console.log(mutate(["a", "b", "c", "d", "e", "f"], [2, 3, 4, 0, 5, 1]));
+console.log("MUTATE ARRAY: ",mutateArray(["a", "b", "c", "d", "e", "f"], [2, 3, 4, 0, 5, 1]));
 
 
 
