@@ -119,9 +119,28 @@ BinaryTree.prototype.interativeInOrder = function (cb) {
   }
 }
 
+BinaryTree.prototype.interativePostOrder = function (cb) {
+  var node = this;
+  var stack = [];
+
+  while(stack.length || node){
+    if(node){
+      stack.push(node);
+      node = node.right;
+    } else {
+      var popped = stack.pop();
+      cb(popped.value);
+      if(popped.left){
+        stack.push(popped.left)
+      }
+    }
+  }
+}
+
 var tree1 = new BinaryTree(1);
 tree1.left = new BinaryTree(5);
 tree1.right = new BinaryTree(2);
+tree1.right.left = new BinaryTree(3)
 tree1.right.right = new BinaryTree(4);
 tree1.left.left = new BinaryTree(6);
 tree1.left.right = new BinaryTree(7);
@@ -130,8 +149,8 @@ tree1.left.right = new BinaryTree(7);
 // tree1.right.left = node(6);
 // tree1.right.right.right = node(4);
 console.log(JSON.stringify(tree1, null , 2));
+// console.log(tree1.interativePostOrder( (ele)=>{console.log(ele)} ))
 console.log(tree1.interativeInOrder( (ele)=>{console.log(ele)} ))
-// console.log(tree1.postOrderTraversal( (ele)=>{console.log(ele)} ))
 
 // console.log(tree1.maxContinousSum())
 
