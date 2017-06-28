@@ -1,10 +1,14 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+
 var lengthOfLongestSubstring = function(str) {
   console.log(str)
   var largestSubString = '';
   var currentString = '';
 
   for(var i = 0; i< str.length; i++){
-    // console.log('CURRENT STIRN: ', currentString)
     if(!currentString.includes(str[i])){
       currentString = currentString + str[i]
     } else {
@@ -14,10 +18,5 @@ var lengthOfLongestSubstring = function(str) {
       }
     }
   }
-  return largestSubString;
+  return largestSubString.length;
 };
-
-
-console.log(lengthOfLongestSubstring('bbbbbb'))
-console.log(lengthOfLongestSubstring('abcabcbb'))
-console.log(lengthOfLongestSubstring('pwwkew'))
