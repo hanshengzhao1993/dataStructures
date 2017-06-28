@@ -2,7 +2,7 @@
  * @param {string} s
  * @return {number}
  */
-
+ 
 var lengthOfLongestSubstring = function(str) {
   console.log(str)
   var largestSubString = '';
