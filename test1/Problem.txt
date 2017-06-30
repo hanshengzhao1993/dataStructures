@@ -1,0 +1,31 @@
+# Find matching endings
+#
+# Given a list of words and a search word, find all words ending with the same letters
+#
+# Does not have to be space/memory efficient. Naive algorithm is good.
+#
+# NOTE: words SHOULD NOT be returned in more than one list!
+#
+
+Example run:
+------------
+Type in a word to find matching endings from the dictionary: duck
+
+match 1 letter (k)
+work
+...
+
+match 2 letters (ck)
+click
+back
+...
+
+match 3 letters (uck)
+muck
+puck
+ruck
+...
+
+match 4 letters (duck)
+duck
+...
