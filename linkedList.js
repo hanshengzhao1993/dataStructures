@@ -8,6 +8,26 @@ var SinglyList = function () {
   this.head = null;
 };
 
+SinglyList.prototype.add = function(value) {
+  var node = new Node(value);
+  var currentNode = this.head;
 
+  // check if head is null
+  if(!currentNode){
+    this.head = node;
+    this.length++;
+
+    return node;
+  }
+
+  while(currentNode.next){
+    currentNode = currentNode.next;
+  }
+
+  currentNode.next = node;
+
+  this.length++;
+  return node;
+};
 
 
