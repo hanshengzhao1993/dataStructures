@@ -27,11 +27,28 @@ SinglyList.prototype.add = function(value) {
   }
 };
 
+SinglyList.prototype.find = function (value) {
+  var currentNode = this.head
+  if(currentNode.value === value){
+    return currentNode;
+  } else {
+    while(currentNode){
+      if(currentNode.value === value){
+        return currentNode;
+      } else {
+        currentNode = currentNode.next;
+      }
+    }
+    return null;
+  }
+}
+
 
 var linkedList = new SinglyList();
 
 linkedList.add(4)
 linkedList.add(5)
 linkedList.add(6)
-console.log(JSON.stringify(linkedList));
+console.log(linkedList.find(7));
+// console.log(JSON.stringify(linkedList, null, 2));
 // SinglyList.add()
