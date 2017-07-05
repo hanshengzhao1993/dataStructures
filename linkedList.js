@@ -17,11 +17,10 @@ SinglyList.prototype.add = function(value) {
     this.head = node;
     this.length++;
   } else {
-    console.log('CURRENT: ',currentNode)
+    // if head doesnt exist go until there the node is null
     while(currentNode.next){
       currentNode = currentNode.next;
     }
-    console.log('SHOULD BE NULL: ',currentNode);
     // console.log('what is node', node);
     currentNode.next = node;
     this.length++;
