@@ -43,12 +43,20 @@ SinglyList.prototype.find = function (value) {
   }
 }
 
+SinglyList.prototype.remove = function (value){
+  var currentNode = this.head;
+  if(value = currentNode.value){
+    this.head = currentNode.next;
+  }
+}
+
 
 var linkedList = new SinglyList();
 
 linkedList.add(4)
 linkedList.add(5)
-linkedList.add(6)
-console.log(linkedList.find(7));
-// console.log(JSON.stringify(linkedList, null, 2));
+// linkedList.add(6)
+linkedList.remove(4)
+// console.log(linkedList.find(7));
+console.log(JSON.stringify(linkedList, null, 2));
 // SinglyList.add()
