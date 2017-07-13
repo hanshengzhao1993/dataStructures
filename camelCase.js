@@ -1,3 +1,7 @@
+/*
+  params: s as a string
+*/
+
 var camelCase = function (s) {
   if(s.length > 0){
     var count = 1;
@@ -10,6 +14,3 @@ var camelCase = function (s) {
   }
   return 0;
 }
-
-
-console.log(camelCase('saveChangesInTheEditor'))
