@@ -1,8 +1,15 @@
 var fs = require('fs');
 
-// console.log(fs);
-
 fs.readFile('./words.txt', 'utf8', function (err, data) {
   if(err) throw err;
-  console.log(data)
+  var arrayOfWords = data.split(' ');
+  var obj = {};
+  arrayOfWords.forEach(function (ele) {
+    if(obj[ele] === undefined){
+      obj[ele] = 1;
+    } else {
+      obj[ele]++;
+    }
+  })
+  console.log(obj)
 })
