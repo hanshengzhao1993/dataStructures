@@ -4,7 +4,8 @@
 // Processed Action 2
 // ...
 // Processed Action 5
-
+// should take in a count
+// should process these information in the order given
 function triggerActions(count) {
   // must call processAction
   let array = [];
