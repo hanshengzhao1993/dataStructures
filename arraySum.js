@@ -1,3 +1,5 @@
+// numsSum takes in start index and ending index
+
 var nums = [-2, 0, 3, -5, 2, -1];
 
 var numsSum = function (start, stop) {
