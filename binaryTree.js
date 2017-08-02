@@ -139,14 +139,84 @@ BinaryTree.prototype.interativePostOrder = function (cb) {
 
 BinaryTree.prototype.findMaxDepth = function () {
   var node = this;
-  console.log(this)
+  var queue = [];
+  var tempQueue = [];
+  var count = 0;
+
+  queue.push(node);
+
+  while(queue.length){
+    queue.forEach((ele)=>{
+      if(ele.right){
+        tempQueue.push(ele.right)
+      }
+      if(ele.left){
+        tempQueue.push(ele.left)
+      }
+    })
+    queue = JSON.parse(JSON.stringify(tempQueue))
+    tempQueue = [];
+    console.log('QUEUE: ', queue, 'TEMPQUEUE: ', tempQueue, count)
+    count++;
+  }
+  return count;
 };
+
+BinaryTree.prototype.findCommonAncestor = function () {
+
+}
+
+// BinaryTree.prototype.findPath = function (nodeValue, path) {
+//   path = path || [];
+//   var currentNode = this;
+//   if(this === null){
+//     return;
+//   }
+//   if(this.value === nodeValue){
+//     return path;
+//   } 
+//   if(currentNode.left){
+//     console.log('went left')
+//     this.findPath(currentNode.left, path.concat(currentNode.value));
+//   }
+//   if(currentNode.right){
+//     console.log('went right')
+//     this.findPath(currentNode.right, path.concat(currentNode.value));
+//   }
+// }
+
+var findPath = function (rootNode ,nodeValue, path) {
+  path = path || [];
+  if(rootNode.value === nodeValue){
+    return path;
+  } 
+  if(rootNode.left){
+    var tempAnswer = findPath(rootNode.left,nodeValue, path.concat(rootNode.value));
+    if(tempAnswer){
+      return tempAnswer
+    }
+    // return tempAnswer !== undefined ? tempAnswer : undefined;
+  }
+  if(rootNode.right){
+    var tempAnswerRight = findPath(rootNode.right,nodeValue, path.concat(rootNode.value));
+    if(tempAnswerRight){
+      return tempAnswerRight
+    }
+    // return tempAnswerRight !== undefined ? tempAnswerRight : undefined;
+    // return findPath(rootNode.right,nodeValue, path.concat(rootNode.value)) ;
+  } 
+  // else {
+  //   console.log('ELSE:', rootNode, path)
+  // }
+  // return path;
+}
 
 var tree1 = new BinaryTree(1);
 tree1.left = new BinaryTree(5);
 tree1.right = new BinaryTree(2);
 tree1.right.left = new BinaryTree(3)
 tree1.right.right = new BinaryTree(4);
+tree1.right.right.right = new BinaryTree(100);
 // tree1.left.left = new BinaryTree(6);
 // tree1.left.right = new BinaryTree(7);
 
@@ -156,11 +226,8 @@ tree1.right.right = new BinaryTree(4);
 // console.log(JSON.stringify(tree1, null , 2));
 // console.log(tree1.interativePostOrder( (ele)=>{console.log(ele)} ))
 // console.log(tree1.interativeInOrder( (ele)=>{console.log(ele)} ))
-console.log(tree.findMaxDepth())
-// console.log(tree1.maxContinousSum())
-
-
-
+// console.log(tree1.findMaxDepth())
+console.log(findPath(tree1, 3, []))
 
 
 
