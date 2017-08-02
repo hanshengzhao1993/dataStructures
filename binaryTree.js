@@ -137,43 +137,27 @@ BinaryTree.prototype.interativePostOrder = function (cb) {
   }
 }
 
+BinaryTree.prototype.findMaxDepth = function () {
+  var node = this;
+  console.log(this)
+};
+
 var tree1 = new BinaryTree(1);
 tree1.left = new BinaryTree(5);
 tree1.right = new BinaryTree(2);
 tree1.right.left = new BinaryTree(3)
 tree1.right.right = new BinaryTree(4);
-tree1.left.left = new BinaryTree(6);
-tree1.left.right = new BinaryTree(7);
+// tree1.left.left = new BinaryTree(6);
+// tree1.left.right = new BinaryTree(7);
 
 // tree1.right.right = node(7);
 // tree1.right.left = node(6);
 // tree1.right.right.right = node(4);
-console.log(JSON.stringify(tree1, null , 2));
+// console.log(JSON.stringify(tree1, null , 2));
 // console.log(tree1.interativePostOrder( (ele)=>{console.log(ele)} ))
-console.log(tree1.interativeInOrder( (ele)=>{console.log(ele)} ))
-
+// console.log(tree1.interativeInOrder( (ele)=>{console.log(ele)} ))
+console.log(tree.findMaxDepth())
 // console.log(tree1.maxContinousSum())
-
-
-var specialIndex = function (array, currentIndex, max, low) {
-  max = max || array.length;
-  low = low || 0;
-  currentIndex = currentIndex || Math.floor(array.length/2)
-  console.log('curentindex: ', currentIndex, max , low);
-  if(currentIndex === max || currentIndex === low ){
-    return -1;
-  }
-  if( currentIndex === array[currentIndex] ){
-    console.log('returning answer: ', currentIndex)
-    return currentIndex;
-  } 
-  if (currentIndex > array[currentIndex]){
-    return specialIndex(array, Math.floor((max + currentIndex) / 2), array.length - 1, currentIndex );
-  }
-  if (currentIndex < array[currentIndex]){
-    return specialIndex(array, Math.floor((low + currentIndex)/ 2), currentIndex - 1, 0  );
-  }
-}
 
 
 
