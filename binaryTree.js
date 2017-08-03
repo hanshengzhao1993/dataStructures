@@ -195,20 +195,39 @@ var findPath = function (rootNode ,nodeValue, path) {
     if(tempAnswer){
       return tempAnswer
     }
-    // return tempAnswer !== undefined ? tempAnswer : undefined;
   }
   if(rootNode.right){
     var tempAnswerRight = findPath(rootNode.right,nodeValue, path.concat(rootNode.value));
     if(tempAnswerRight){
       return tempAnswerRight
     }
-    // return tempAnswerRight !== undefined ? tempAnswerRight : undefined;
-    // return findPath(rootNode.right,nodeValue, path.concat(rootNode.value)) ;
   } 
-  // else {
-  //   console.log('ELSE:', rootNode, path)
-  // }
-  // return path;
+}
+
+var leaseCommonAncestor = function (root, value1, value2) {
+  // console.log('ROOT:', root)
+  if(root === undefined){
+    return;
+  } 
+  if(root.value === value1 || root.value === value2){
+    // console.log('should return 5 or 100: ', root)
+    return root;
+  }
+  if(root.left){
+    var leftRoot = leaseCommonAncestor(root.left, value1, value2);
+  }
+  if(root.right){
+    var rightRoot = leaseCommonAncestor(root.right, value1, value2);
+  }
+  if(leftRoot && rightRoot){
+    return root;
+  }
+  if(leftRoot){
+    return leftRoot
+  }
+  if(rightRoot){
+    return rightRoot
+  }
 }
 
 var tree1 = new BinaryTree(1);
@@ -227,8 +246,8 @@ tree1.right.right.right = new BinaryTree(100);
 // console.log(tree1.interativePostOrder( (ele)=>{console.log(ele)} ))
 // console.log(tree1.interativeInOrder( (ele)=>{console.log(ele)} ))
 // console.log(tree1.findMaxDepth())
-console.log(findPath(tree1, 3, []))
-
+// console.log(findPath(tree1, 3, []))
+console.log(leaseCommonAncestor(tree1, 100, 4))
 
 
 
