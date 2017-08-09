@@ -3,19 +3,6 @@ var treeNode = function (value) {
   this.children = [];
 }
 
-
-var newTree = new treeNode(1);
-newTree.children[0] = new treeNode(2);
-newTree.children[1] = new treeNode(3);
-newTree.children[2] = new treeNode(4);
-newTree.children[0].children[0] = new treeNode(5)
-newTree.children[0].children[1] = new treeNode(6)
-newTree.children[0].children[2] = new treeNode(7)
-
-// console.log(JSON.stringify(newTree, null, 2));
-
-
-
 var BinaryTreeNode = function(value){
   this.value = value;
   this.left = null;
@@ -104,22 +91,28 @@ BinaryTreeNode.prototype.inOrderTraversal = function(cb){
   }
 }
 
-BinaryTreeNode.prototype.postOrderTraversal = function(cb){
-  var currentNode = this;
+// BinaryTreeNode.prototype.postOrderTraversal = function(cb){
+//   var currentNode = this;
   
-  if(currentNode.left){
-    currentNode.left.postOrderTraversal(cb)
-  }
-  if(currentNode.right){
-    currentNode.right.postOrderTraversal(cb);
-  }
+//   if(currentNode.left){
+//     currentNode.left.postOrderTraversal(cb)
+//   }
+//   if(currentNode.right){
+//     currentNode.right.postOrderTraversal(cb);
+//   }
 
-  cb(currentNode.value)
+//   cb(currentNode.value)
   
-}
+// }
 
 
-
+var newTree = new treeNode(1);
+newTree.children[0] = new treeNode(2);
+newTree.children[1] = new treeNode(3);
+newTree.children[2] = new treeNode(4);
+newTree.children[0].children[0] = new treeNode(5)
+newTree.children[0].children[1] = new treeNode(6)
+newTree.children[0].children[2] = new treeNode(7)
 
 
 
