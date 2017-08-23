@@ -5,18 +5,19 @@
  */
 
  // Start with sorted coins
-var coinChange = function(coins, amount) {
-  var copiedSum = amount;
-  var count = 0;
-  for(var i = coins.length; i> -1 ; i--) {
-    // console.log(i)
-    while(coins[i] <= copiedSum){
-      copiedSum = copiedSum - coins[i]
-      count++;
-    }
-  }
-  return count;
+'use strict'
+
+var coins = [1,2,5,10,20,50,100,200];
+
+var count = 0
+var coinChange = function(amount) {
+  //base case
+  if (!amount) { count++; return; }
+
+  //recursive case
+  for (let coin of coins.filter(coin => coin <= amount))
+    coinChange(amount - coin)
 };
 
-
-console.log(coinChange([1,2,5], 11))
+coinChange(3)
+console.log(count)
