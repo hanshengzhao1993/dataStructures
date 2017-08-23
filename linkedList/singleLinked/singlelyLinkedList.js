@@ -16,22 +16,19 @@ class SinglelyLinkedList {
   add(data){
     let node = new LinkedList(data);
     let currentNode = this.head;
-
     if(!this.head){
       this.head = node;
       this.length++;
       return node;
     }
-
     while(currentNode.next){
       currentNode = currentNode.next;
     }
-
     currentNode.next = node;
     this.length++;
-
     return node;
   }
+  searchNode(data){}
 }
 
 const linkedList = new SinglelyLinkedList(1);
