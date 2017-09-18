@@ -29,5 +29,5 @@ newTree.left.left = new BinaryTree(4);
 newTree.left.right = new BinaryTree(5);
 newTree.right.left = new BinaryTree(6);
 newTree.right.right = new BinaryTree(7);
-
-console.log(newTree.commonAncestory(4,5))
+// console.log(newTree);
+console.log(newTree.commonAncestory(2,3))
