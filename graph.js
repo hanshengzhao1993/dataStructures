@@ -33,7 +33,10 @@ Graph.prototype.size = function () {
   return this.vertices.length;
 }
 
+Graph.prototype.traverseDFS = function (startVertice, cb) {
+  var visitedVertice = {};
 
+}
 
 
 var newGraph = new Graph();
