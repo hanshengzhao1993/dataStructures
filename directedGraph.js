@@ -14,6 +14,32 @@ DirectedGraph.prototype.addEdge = function (val1, val2) {
   }
 }
 
+DirectedGraph.prototype.DFS = function (startingVal, cb) {
+  var visitedNodes = {};
+  var stack = [];
+  stack.push(startingVal);
+  while(stack.length){
+    var lastVal = stack[stack.length - 1];
+    if(visitedNodes[lastVal] === undefined){
+      cb(lastVal);
+      visitedNodes[lastVal] = true;
+    }
+    var lastValChildren = this.edges[lastVal];
+    if(lastValChildren.length > 0){
+      for(var i = 0; i < lastValChildren.length; i++){
+        if( visitedNodes[lastValChildren[i]] === undefined ){
+          stack.push(lastValChildren[i]);
+          break;
+        }
+        if(i === lastValChildren.length - 1){
+          stack.pop();
+        }
+      }
+    } else {
+      stack.pop();
+    }
+  }
+}
 
 
 var newGraph = new DirectedGraph();
@@ -31,4 +57,5 @@ newGraph.addEdge(1,3)
 newGraph.addEdge(2,1)
 newGraph.addEdge(3,2)
 newGraph.addEdge(3,4)
+newGraph.DFS(0, function (a) {console.log(a)})
 console.log(newGraph)
