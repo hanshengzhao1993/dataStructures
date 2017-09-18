@@ -12,13 +12,11 @@ var bracketValidater = function (brackets) {
     '}': '{'
   }
   for(var i = 0; i < bracketLength; i++){
-    console.log(i, brackets[i], bracketLength)
     if(openingBracket[brackets[i]]){
       stack.push(brackets[i])
     }
     if(closingBracket[brackets[i]]){
       var popped = stack.pop();
-      console.log(popped, closingBracket[brackets[i]])
       if(popped !== closingBracket[brackets[i]]){
         return false;
       }
