@@ -35,15 +35,19 @@ Graph.prototype.size = function () {
 
 Graph.prototype.traverseDFS = function (startVertice, cb) {
   var visitedVertice = {};
-
 }
 
 
 var newGraph = new Graph();
+newGraph.addVertices(0);
+newGraph.addEdge(0,1);
+newGraph.addEdge(0,4);
+newGraph.addEdge(0,5);
 newGraph.addVertices(1);
 newGraph.addVertices(2);
+newGraph.addVertices(3);
 newGraph.addVertices(4);
-newGraph.addEdge(1,4);
-newGraph.addEdge(1,2);
+newGraph.addVertices(5);
+newGraph.addEdge()
 newGraph.deleteEdge(1,4);
 console.log(newGraph.edges)
