@@ -9,15 +9,19 @@ BinaryTree.prototype.levelSums = function () {
   var queue = [this, null];
   var currentLevel = 0;
   while(queue.length){
-    var shiftedNode = queue.shit();
+    var shiftedNode = queue.shift();
+
+
     if( shiftedNode === null ){
       queue.push(null);
       if(queue[0] === null){
-        return;
+        return ans;
       }
       ans.push(currentLevel);
+      currentLevel = 0;
     } else {
       currentLevel += shiftedNode.value;
+
       if(shiftedNode.left){
         queue.push(shiftedNode.left)
       }
@@ -25,8 +29,8 @@ BinaryTree.prototype.levelSums = function () {
         queue.push(shiftedNode.right);
       }
     }
+
   }
-  return ans;
 }
 
 
@@ -36,5 +40,5 @@ newTree.right = new BinaryTree(10);
 newTree.right.right = new BinaryTree(12);
 newTree.left.left = new BinaryTree(2);
 newTree.right.right.left = new BinaryTree(11);
-
+console.log(newTree)
 console.log(newTree.levelSums())
