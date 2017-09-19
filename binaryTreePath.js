@@ -9,7 +9,6 @@ BinaryTree.prototype.findPath = function (val, path) {
     return;
   } else {
     path.push(this.value);
-  // console.log(path)
     if(this.value === val){
       return path;
     }
@@ -26,12 +25,8 @@ BinaryTree.prototype.findPath = function (val, path) {
       }
     }
   }
-
-  // should take out 4 at this point trying to figure it out
-
   if(this.right){
-    // this.right.findPath(val, path);
-     var right = this.right.findPath(val, path);
+    var right = this.right.findPath(val, path);
     if(right.length > 1){
       if(right[right.length - 1] === val){
         return right;
