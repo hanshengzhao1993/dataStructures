@@ -8,14 +8,9 @@ var debounce = function (func, wait) {
   return function () {
     var args = arguments, context = this;
     clearTimeout(timeout);
-    timeout = setTimeout( function () {
-      timeout = null;
-      func.apply(context, args)
-    }, wait)
-
-    if(!timeout){
+    timeout = setTimeout(function() {
       func.apply(context, args);
-    }
+    }, wait);
   }
 }
 
