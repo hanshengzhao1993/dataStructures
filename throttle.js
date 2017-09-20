@@ -1,20 +1,17 @@
-var throttle = function (func, wait) {
-  var currentCalling = null;
-  return function () {
-    var args = arguments;
-    var context = this;
-    if(currentCalling === null){
-      func.apply(context, args);
-      currentCalling = true;
-      setTimeout( (throttle)=>{throttle = false}, wait, currentCalling )
+var throttle = function(func, limit) {
+  var inThrottle;
+  return function() {
+    if(!inThrottle){
+      
     }
-  }
-}
+  };
+};
 
 var log = function (name) {
-  console.log('HI' + name)
+  console.log('HI ' + name)
 }
-var newThrottleCall = throttle(log, 300);
+var newThrottleCall = throttle(log, 5);
+var a = new Date();
 
 newThrottleCall('Kai');
 newThrottleCall('Han');
@@ -23,5 +20,3 @@ newThrottleCall('I');
 newThrottleCall('H');
 newThrottleCall('G');
 newThrottleCall('B');
-
-setTimeout(log.bind('DONEEE'), 300);
