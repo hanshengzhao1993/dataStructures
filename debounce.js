@@ -9,14 +9,33 @@ var debounce = function (func, wait) {
     var args = arguments, context = this;
     clearTimeout(timeout);
     timeout = setTimeout(function() {
-      func.apply(context, args);
+      func.apply(context, args)
     }, wait);
   }
 }
 
-var testingDebounce = debounce(log, 200);
 
 
+var debounceImmediate = function (func, wait, immediate) {
+  var timeout;
+  return function () {
+    var args = arguments,context = this;
+    var later = function () {
+      timeout = null;
+      if(!immediate){
+        func.apply(context, args);
+      }
+    }
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if(callNow){
+      func.apply(context, args)
+    }
+  }
+} 
+
+var testingDebounce = debounceImmediate(log, 200);
 testingDebounce('Han')
 testingDebounce('Emily')
 testingDebounce('Ngu')
