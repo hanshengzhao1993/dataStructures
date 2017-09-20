@@ -4,6 +4,14 @@ var log = function (name) {
 
 
 var debounce = function (func, wait) {
+  var timeout;
+  return function () {
+    var args = arguments, context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout( function () {
+      func.apply(context, args)
+    }, wait )
+  }
 }
 
 
