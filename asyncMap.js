@@ -17,3 +17,8 @@ var func3 = function(cb) {
 };
 
 
+var asyncMap = function (array,cb) {}
+
+
+
+asyncMap([func1, func2, func3], function(result) {console.log(result)});
