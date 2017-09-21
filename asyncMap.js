@@ -18,18 +18,7 @@ var func3 = function(cb) {
 
 
 var asyncMap = function (array,cb) {
-  var ans = [];
-  for(var i = 0; i < array.length; i++){
-    (function (index){
-      
-    })(i)
-    array[i](function (value) {
-      ans.push(value);
-      if(ans.length === 3){
-        cb(ans)
-      }
-    })
-  }
+ 
 }
 
 
