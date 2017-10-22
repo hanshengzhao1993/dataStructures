@@ -26,6 +26,4 @@ var bracketValidater = function (brackets) {
   return stack.length === 0 ? true : false;
 }
 
-console.log(bracketValidater("{[]()}"))
-console.log(bracketValidater('{[(])}'))
-console.log(bracketValidater('{[}'))
+console.log(bracketValidater("{}[]()"))

@@ -19,13 +19,17 @@ var func3 = function(cb) {
 
 var asyncMap = function (array,cb) {
   var answer = [];
+  var count = array.length;
   for(var i = 0; i< array.length; i++){
-    array[i]( (value)=>{
-      answer.push(value);
-      if(answer.length === array.length){
-        cb(answer);
-      }
-    })
+    (function (index) {
+      array[i]( (value)=>{
+        answer[index] = value;
+        count--;
+        if(count === 0){
+          cb(answer);
+        }
+      })
+    })(i)
   }
 }
 

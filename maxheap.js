@@ -36,8 +36,18 @@ MaxHeap.prototype.deleteMax = function () {
   var currentIndex = 0;
   var leftChild = (currentIndex * 2) + 1;
   var rightChild = (currentIndex * 2) + 2;
-  while( this.heap[currentIndex] > this.heap[leftChild] || this.heap[currentIndex] > this.heap[rightChild] ){
-    var maxChild = this.heap[leftChild] > this.heap[rightChild] ? rightChild : leftChild;
+  var maxChild = this.heap[leftChild] > this.heap[rightChild] ? leftChild : rightChild;
+  console.log(currentIndex, leftChild, rightChild, maxChild);
+  while( this.heap[currentIndex] < this.heap[leftChild] || this.heap[currentIndex] < this.heap[rightChild] ){
+    if(this.heap.length === 2){
+      if(this.heap[0] > this.heap[1]){
+        break;
+      } else {
+        swap(this.heap, 0, 1);
+        break;
+      }
+    }
+    console.log('getting in here?')
     swap(this.heap, currentIndex, maxChild);
     currentIndex = maxChild;
     leftChild = (currentIndex * 2) + 1;
@@ -63,6 +73,7 @@ var heap = new MaxHeap();
 heap.insert(11);
 heap.insert(12);
 heap.insert(13);
+heap.insert(14);
 console.log(heap.deleteMax())
 // console.log(heap.deleteMax())
 // console.log(heap.peak())
@@ -81,9 +92,8 @@ var minNthValues = function (array, nth) {
         heap.insert(ele);
       }
     }
-    console.log('CURENT HEAP AFTER EACH ', heap);
   })
-  return heap;
+  return heap.heap;
 }
 
 console.log('ANSWER', minNthValues([11,12,13,5, 49, 7,1], 3)) // 5 , 7, 8

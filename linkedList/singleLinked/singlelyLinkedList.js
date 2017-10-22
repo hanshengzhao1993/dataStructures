@@ -11,7 +11,7 @@ class SinglelyLinkedList {
   constructor(data){
     let node = new LinkedList(data);
     this.head = node;
-    this.length = 0;
+    this.length = 1;
   }
   add(data){
     let node = new LinkedList(data);
@@ -64,11 +64,47 @@ class SinglelyLinkedList {
       }
     }
   }
+
+  findMiddle(){
+    let middle = Math.ceil(this.length/2);
+    let currentNode = this.head;
+    while(middle > 1){
+      currentNode = currentNode.next;
+      middle--;
+    }
+    return currentNode;
+  }
+
+  flatten(){
+    let currentNode = this.head;
+    while(currentNode){
+      console.log(currentNode)
+      if(currentNode.next.data){
+        currentNode.next = currentNode.next.data;
+      }
+      currentNode = currentNode.next;
+    }
+    console.log('ANSSER -------------------------------------------')
+  }
 }
 
-const linkedList = new SinglelyLinkedList(1);
-linkedList.add(2)
-linkedList.add(3)
-linkedList.add(4)
-console.log(linkedList.remove(3));
-console.log(JSON.stringify(linkedList));
+const linkedList2 = new LinkedList(1);
+linkedList2.next = new LinkedList(2);
+linkedList2.next.next = new LinkedList(3);
+
+console.log(linkedList2);
+
+const linkedList = new SinglelyLinkedList(0);
+linkedList.add(linkedList2)
+linkedList.add(4);
+// linkedList.add(linkedList3);
+// linkedList.add(linkedList4);
+linkedList.flatten();
+// linkedList.add(2)
+// linkedList.add(3)
+// linkedList.add(4)
+// linkedList.add(5)
+// console.log(linkedList.searchNodeAt(3))
+// console.log(linkedList.remove(3));
+// console.log(linkedList.findMiddle())
+console.log(JSON.stringify(linkedList, null, 2));
